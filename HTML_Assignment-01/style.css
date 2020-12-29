@@ -1,0 +1,79 @@
+* {
+  margin: 0px;
+}
+
+body,html {
+  width: 100%;
+  height: 100%;
+}
+
+/* Navbar */
+
+.navbar {
+  background-color:   #2447b4;
+}
+
+.jumbotron {
+    margin-top: 10px;
+    background-color:  #4c73b2;
+    box-shadow: 10px 10px 5px #f4f3f3;
+    color: #f4f3f3;
+}
+
+.about {
+    margin: 20px;
+    text-align: center;
+}
+
+.card {
+  border-color: #2447b4;
+}
+
+.card-title {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.about-us {
+  margin-left: 25px;
+  margin-right: 25px;
+  background-color: #2447b4;
+}
+
+.about-title {
+  text-align: center;
+  padding: 25px 25px 25px 25px;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.address {
+  margin-left: 20px;
+}
+
+.contact {
+  margin-left: 50px;
+  margin-right: 50px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.form-control {
+  width: 75%;
+}
+
+/* Footer */
+
+.page-footer {
+  clear: both;
+  position: relative;
+  background-color: #2447b4;
+  height: 500px;
+  margin-top: 50px;
+}
+
+.page-footer {
+  color: #f1f1f1;
+}
