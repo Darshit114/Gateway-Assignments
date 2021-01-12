@@ -1,0 +1,156 @@
+﻿@model Product_Management_System.Models.ProductViewModel
+
+
+<h2>EditProduct</h2>
+
+
+<form id="productUpdate" enctype="multipart/form-data">
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>ProductViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @id = "name" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Category, new SelectList(Enum.GetValues(typeof(Product_Management_System.Models.ProductsCategory))), "Select Category", new { @id = "category" })
+                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", @id = "price" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control", @id = "quantity" } })
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShortDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.ShortDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LongDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.LongDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LongDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.smallImgFile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.smallImgFile, new { type = "file", placeholder = Html.DisplayNameFor(m => m.smallImgFile), @class = "form-control-file", @id = "smallImg", @name = "smallImg" })
+                @Html.ValidationMessageFor(model => model.smallImgFile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.largeImgFile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.largeImgFile, new { type = "file", placeholder = Html.DisplayNameFor(m => m.largeImgFile), @class = "form-control-file", @id = "largeImg", @name = "largeImg" })
+                @Html.ValidationMessageFor(model => model.largeImgFile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" id="btnUpdate" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+    
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+
+        <script>
+            $(document).ready(function () {
+
+                $("#productUpdate").submit(function (event) {
+                    event.preventDefault();
+                }),
+
+                $("#btnUpdate").on('click', function () {
+
+                    var data = new FormData();
+
+                    var smallImg = $("#smallImg").get(0).files;
+                    var largeImg = $("#largeImg").get(0).files;
+
+                    var id = $("#Id").val(); 
+                    var name = $("#name").val();
+                    var category = $("#category").val();
+                    var price = $("#price").val();
+                    var quantity = $("#quantity").val();
+                    var shortText = $("#ShortDescription").val();
+                    var longText = $("#LongDescription").val();
+
+
+
+                    // Adding the content of uploaded image content to the form data collecion
+                    if (smallImg.length > 0) {
+                        data.append("SmallImg", smallImg[0]);
+                    }
+
+                    if (largeImg.length > 0) {
+                        data.append("LargeImg", largeImg[0]);
+                    }
+
+                    data.append("Id", id);
+                    data.append("Name", name);
+                    data.append("Category", category);
+                    data.append("Price", price);
+                    data.append("Quantity", quantity);
+                    data.append("ShortText", shortText);
+                    data.append("LongText", longText);
+
+                    $.ajax({
+                        type: 'PUT',
+                        url: 'http://localhost:59086/api/v1/products/UpdateProduct',
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        dataType: 'json',
+                        success: function (response, jqXHR) {
+
+                            alert("Product Updated Successfully!!");
+                            window.location.href = '/Home/products';
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        }
+                    })
+
+                })
+            })
+        </script>
+
+    }

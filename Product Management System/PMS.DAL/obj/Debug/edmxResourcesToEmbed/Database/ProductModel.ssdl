@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="Quantity" Type="bigint" Nullable="false" />
+    <Property Name="Short_Description" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Long_Description" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Small_Image" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Large_Image" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="UpdatedAt" Type="datetime" />
+  </EntityType>
+  <Function Name="usp_ProductsCRUD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Inventory">
+    <Parameter Name="ActionName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProductId" Type="int" Mode="In" />
+    <Parameter Name="ProductName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CategoryName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Price" Type="money" Mode="In" />
+    <Parameter Name="Quantity" Type="bigint" Mode="In" />
+    <Parameter Name="Short_Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Long_Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Small_Img" Type="nvarchar" Mode="In" />
+    <Parameter Name="Large_Img" Type="nvarchar" Mode="In" />
+    <Parameter Name="CreatedAt" Type="datetime" Mode="In" />
+    <Parameter Name="UpdatedAt" Type="datetime" Mode="In" />
+  </Function>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="Inventory" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,13 @@
+﻿@if (Session["Id"] != null)
+{
+    <div class="jumbotron">
+        <h1>Welcome, @Session["Username"]</h1>
+    </div>
+}
+else
+{
+    <div class="jumbotron">
+        <h1>Product Management System</h1>
+        <p class="lead">System to manage various Electronics items</p>
+    </div>
+}

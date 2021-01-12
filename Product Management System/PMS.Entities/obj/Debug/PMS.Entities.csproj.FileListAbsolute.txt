@@ -1,0 +1,9 @@
+C:\Tutorials\Gateway-Assignments\Product Management System\PMS.Entities\bin\Debug\PMS.Entities.dll
+C:\Tutorials\Gateway-Assignments\Product Management System\PMS.Entities\bin\Debug\PMS.Entities.pdb
+C:\Tutorials\Gateway-Assignments\Product Management System\PMS.Entities\bin\Debug\NLog.dll
+C:\Tutorials\Gateway-Assignments\Product Management System\PMS.Entities\bin\Debug\NLog.xml
+C:\Tutorials\Gateway-Assignments\Product Management System\PMS.Entities\obj\Debug\PMS.Entities.csprojAssemblyReference.cache
+C:\Tutorials\Gateway-Assignments\Product Management System\PMS.Entities\obj\Debug\PMS.Entities.csproj.CoreCompileInputs.cache
+C:\Tutorials\Gateway-Assignments\Product Management System\PMS.Entities\obj\Debug\PMS.Entities.csproj.CopyComplete
+C:\Tutorials\Gateway-Assignments\Product Management System\PMS.Entities\obj\Debug\PMS.Entities.dll
+C:\Tutorials\Gateway-Assignments\Product Management System\PMS.Entities\obj\Debug\PMS.Entities.pdb
