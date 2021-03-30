@@ -1,0 +1,108 @@
+<main>
+    <div class="container-fluid">
+        <div class="card mb-4" style="margin-top: 25px;">
+            <div class="card-header">
+                <i class="fas fa-info-circle"></i>
+                Company Information
+            </div>
+
+            <div class="card-body">
+                <div class="m-3">
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label">Name : </label>
+                        <div class="col-8" >
+                            <input
+                            disabled
+                            type="text"
+                            class="form-control"
+                            value="{{companyData.name}}"
+                          />
+                        </div>
+                    </div>
+                     
+                     <div class="form-group row">
+                        <label class="col-4 col-form-label">Email : </label>
+                        <div class="col-8">
+                            <input
+                            disabled
+                            type="text"
+                            class="form-control"
+                            value="{{companyData.email}}"
+                          />
+                        </div>
+                    </div>
+                     
+                     <div class="form-group row">
+                        <label class="col-4 col-form-label">Total-Employee : </label>
+                        <div class="col-8">
+                            <input
+                            disabled
+                            type="text"
+                            class="form-control"
+                            value="{{companyData.totalEmployee}}"
+                          />
+                        </div>
+                    </div>
+                     
+                    
+                      <div class="form-group row">
+                        <label class="col-4 col-form-label">Address : </label>
+                        <div class="col-8">
+                            <input
+                            disabled
+                            type="text"
+                            class="form-control"
+                            value="{{companyData.address}}"
+                          />
+                        </div>
+                    </div>
+                     
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label">IsCompanyActive ? : </label>
+                        <div class="col-8">
+                            <input
+                            disabled
+                            type="text"
+                            class="form-control"
+                            value="{{companyData.isCompanyActive}}"
+                          />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label">Total-Branch : </label>
+                        <div class="col-8">
+                            <input
+                            disabled
+                            type="text"
+                            class="form-control"
+                            value="{{companyData.totalBranch}}"
+                          />
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-center p-3"><u>Branch Details</u></h3>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead style="    color: white;
+                        background-color: #343a40;">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let company of companyData.companyBranch">
+                            <td>{{company.branchid}}</td>
+                            <td>{{company.branchname}}</td>
+                            <td>{{company.branchaddress}}</td>
+                        </tr>
+                    </tbody>
+                  
+                    </table>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+</main>

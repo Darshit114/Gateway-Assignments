@@ -1,0 +1,228 @@
+<main>
+  <div class="container-fluid">
+    <div class="card mb-4" style="margin-top: 25px">
+      <div class="card-header">
+        <i class="fas fa-plus"></i>
+        Add Company Data
+      </div>
+
+      <div class="card-body">
+        <form #myform="ngForm" novalidate>
+          <div class="m-3">
+            <div class="form-group row">
+              <label class="col-4 col-form-label">Name : </label>
+              <div class="col-8">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  [(ngModel)]="companyData.name"
+                  required
+                />
+                <div *ngIf="myform.controls.name.invalid" class="text-danger">
+                  Required
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-4 col-form-label">Email : </label>
+              <div class="col-8">
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  [(ngModel)]="companyData.email"
+                  email
+                  #email="ngModel"
+                  required
+                />
+                <div *ngIf="myform.controls.email.invalid" class="text-danger">
+                  Valid Email Required
+                </div>
+                <!-- <div *ngIf="email.errors?.email" class="text-danger">
+                  Email Id Not valid.
+                </div> -->
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-4 col-form-label">Total-Employee : </label>
+              <div class="col-8">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="totalEmployee"
+                  type="number"
+                  [(ngModel)]="companyData.totalEmployee"
+                  required
+                />
+                <div
+                  *ngIf="myform.controls.totalEmployee.invalid"
+                  class="text-danger"
+                >
+                  Required
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-4 col-form-label">Address : </label>
+              <div class="col-8">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="address"
+                  [(ngModel)]="companyData.address"
+                  required
+                />
+                <div
+                  *ngIf="myform.controls.address.invalid"
+                  class="text-danger"
+                >
+                  Required
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-4 col-form-label">IsCompanyActive ? : </label>
+              <div class="col-8">
+                <select
+                  class="form-control"
+                  name="isCompanyActive"
+                  [(ngModel)]="companyData.isCompanyActive"
+                  required
+                >
+                  <option>YES</option>
+                  <option>NO</option>
+                </select>
+                <div
+                  *ngIf="myform.controls.isCompanyActive.invalid"
+                  class="text-danger"
+                >
+                  Required
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="form-group row">
+                        <label class="col-4 col-form-label">Total-Branch : </label>
+                        <div class="col-8">
+                            <input type="text"  class="form-control" name="totalBranch"  [(ngModel)]='companyData.totalBranch' />
+                        </div>
+                    </div> -->
+
+            <form>
+              <div class="form-group row">
+                <span class="col-md-3">
+                  <label class="col-12 col-form-label">Branch Id : </label>
+                  <div class="col-12">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="branchId"
+                      [(ngModel)]="branch.branchid"
+                    />
+                  </div>
+                </span>
+
+                <span class="col-md-3">
+                  <label class="col-12 col-form-label">Branch Name : </label>
+                  <div class="col-12">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="branchName"
+                      [(ngModel)]="branch.branchname"
+                    />
+                  </div>
+                </span>
+
+                <span class="col-md-3">
+                  <label class="col-12 col-form-label">Branch Address : </label>
+                  <div class="col-12">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="branchAddress"
+                      [(ngModel)]="branch.branchaddress"
+                    />
+                  </div>
+                </span>
+
+                <span class="col-md-3 col-form-label">
+                  <div class="row mt-4 pt-2">
+                    <button class="btn btn-success" (click)="AddMore()">
+                      <i class="fas fa-plus"></i> Add Branch
+                    </button>
+                  </div>
+                </span>
+              </div>
+            </form>
+
+            <div *ngFor="let obj of branchList; let i = index">
+              <div class="form-group row">
+                <span class="col-md-3">
+                  <label class="col-12 col-form-label">Branch Id : </label>
+                  <div class="col-12">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="branchId{{ i }}"
+                      [(ngModel)]="obj.branchid"
+                    />
+                  </div>
+                </span>
+
+                <span class="col-md-3">
+                  <label class="col-12 col-form-label">Branch Name : </label>
+                  <div class="col-12">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="branchName{{ i }}"
+                      [(ngModel)]="obj.branchname"
+                    />
+                  </div>
+                </span>
+
+                <span class="col-md-3">
+                  <label class="col-12 col-form-label">Branch Address : </label>
+                  <div class="col-12">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="branchaddress{{ i }}"
+                      [(ngModel)]="obj.branchaddress"
+                    />
+                  </div>
+                </span>
+
+                <span class="col-md-3 col-form-label">
+                  <div class="row" style="margin-top: 30px">
+                    <button class="btn btn-danger" (click)="removeBranch(i)">
+                      <i class="fas fa-trash-alt"></i> Delete
+                    </button>
+                  </div>
+                </span>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-12">
+                <input
+                  type="button"
+                  class="btn btn-dark btn-lg btn-block"
+                  [disabled]="myform.invalid"
+                  (click)="UpdateCompany()"
+                  value="Update Details"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
